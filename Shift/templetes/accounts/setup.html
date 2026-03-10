@@ -1,0 +1,14 @@
+{% load static%}
+<link href="{%static 'css/setup.css'%}" rel="stylesheet" type="text/css">
+{% if messages %}
+{% for message in messages %}
+{% if message.tags == 'error' %}⚠ {% else %}✓ {% endif %}{{ message }}
+{% endfor %}
+{% endif %}
+{% csrf_token %}
+社員番号*
+{{ form.employee_id.value|default:'' }}
+ {% if form.employee_id.errors %}
+{{ form.employee_id.errors|join:", " }}
+
+{% endif %}
